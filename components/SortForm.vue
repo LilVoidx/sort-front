@@ -36,13 +36,13 @@ export default {
 
       const numbers = this.numbersInput
         .split(',')
-        .map((num) => parseInt(num.trim(), 10))
+        .map((num) => parseFloat(num.trim()))
         .filter((num) => !isNaN(num));
 
       this.$emit('submit', numbers);
     },
     isValidInput() {
-      return /^(\d+\s*,\s*)*\d+$/.test(this.numbersInput);
+      return /^(-?\d+(\.\d+)?\s*,\s*)*-?\d+(\.\d+)?$/.test(this.numbersInput);
     },
   },
 };
